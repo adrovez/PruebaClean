@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace aadrovez.Dominio
+namespace aadrovez.Infraestructura.Data
 {
-    public class Class1
+    public class AppDbContext
     {
     }
 }

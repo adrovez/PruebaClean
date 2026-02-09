@@ -1,11 +1,14 @@
-﻿using aadrovez.Aplicacion.IRepositories;
+﻿using Autofac;
+using Autofac.Integration.WebApi;
+
+using aadrovez.Aplicacion.IRepositories;
 using aadrovez.Aplicacion.IServices;
+//using aadrovez.Aplicacion.Mapping;
 using aadrovez.Aplicacion.Services;
 using aadrovez.Infraestructura.Data;
 using aadrovez.Infraestructura.Repositories;
-using Autofac;
-using Autofac.Integration.WebApi;
-using AutoMapper;
+
+//using AutoMapper;
 using System.Reflection;
 using System.Web.Http;
 
@@ -15,26 +18,32 @@ namespace aadrovez.Presentacion.API.App_Start
     {
         public static void Register(HttpConfiguration config)
         {
-            var builder = new Autofac.ContainerBuilder();
+            var builder = new ContainerBuilder();
 
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+                     
 
-            // 1) MapperConfiguration (singleton)
-            builder.Register(ctx => new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<MappingProfile>();
-            }))
-            .AsSelf()
-            .SingleInstance();
-
-            // 2) IMapper (por request)
             builder.Register(ctx =>
             {
-                var cfg = ctx.Resolve<MapperConfiguration>();
-                return cfg.CreateMapper(ctx.Resolve);
-            })
-            .As<IMapper>()
-            .InstancePerRequest();
+                var asm = typeof(aadrovez.Aplicacion.Mapping.MappingProfile).Assembly;
+                var configmapper = new global::AutoMapper.MapperConfiguration(cfg =>
+                {
+                    cfg.AddProfile<aadrovez.Aplicacion.Mapping.MappingProfile>();
+                });
+
+                configmapper.AssertConfigurationIsValid();
+                return configmapper;
+            }).As<AutoMapper.IConfigurationProvider>()
+              .SingleInstance();
+
+            builder.Register(ctx =>
+            {
+                var configmapper = ctx.Resolve<AutoMapper.IConfigurationProvider>();
+                return configmapper.CreateMapper(ctx.Resolve);
+            }).As<AutoMapper.IMapper>()
+              .InstancePerLifetimeScope();
+
+
             // =====================
             // Infrastructure
             // =====================

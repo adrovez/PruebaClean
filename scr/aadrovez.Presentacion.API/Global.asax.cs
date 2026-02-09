@@ -1,12 +1,6 @@
 using aadrovez.Presentacion.API.App_Start;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using AutoMapper;
 using System.Web.Http;
-using System.Web.Mvc;
-using System.Web.Optimization;
-using System.Web.Routing;
 
 namespace aadrovez.Presentacion.API
 {
@@ -20,6 +14,7 @@ namespace aadrovez.Presentacion.API
             //RouteConfig.RegisterRoutes(RouteTable.Routes);
             //BundleConfig.RegisterBundles(BundleTable.Bundles);
             AutofacConfig.Register(GlobalConfiguration.Configuration);
+           
         }
     }
 }

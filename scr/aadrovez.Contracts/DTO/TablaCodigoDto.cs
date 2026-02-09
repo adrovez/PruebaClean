@@ -1,4 +1,4 @@
-﻿namespace aadrovez.Aplicacion.DTOs
+﻿namespace aadrovez.Contracts.DTO
 {
     public class TablaCodigoDto
     {

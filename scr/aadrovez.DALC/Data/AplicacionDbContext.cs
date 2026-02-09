@@ -8,7 +8,7 @@ namespace aadrovez.DALC.Data
         // Define tus DbSets y configuración aquí
 
         // El constructor base puede requerir una cadena de conexión
-        public AplicacionDbContext() : base("name=DefaultConnection")
+        public AplicacionDbContext() : base("name=stringConexion")
         {
         }
 

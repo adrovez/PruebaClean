@@ -27,19 +27,6 @@ namespace aadrovez.UI.API.Controllers
             return Ok(data);
         }
 
-        // POST: api/TablaCodigo
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT: api/TablaCodigo/5
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/TablaCodigo/5
-        public void Delete(int id)
-        {
-        }
+      
     }
 }

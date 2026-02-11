@@ -1,0 +1,34 @@
+﻿@model  IEnumerable<Honda.MVC.Models.TablaCodigoViewModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<a href="@Url.Action("Form1","Create")" class="btn btn-outline-primary">Nuevo</a>
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Codigo</th>
+            <th>Descripcion</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.CODIGO</td>
+                <td>@item.DESCRIPCION</td>
+                <th>
+                    <a href="@Url.Action("Details"  ,"Form1",new { Id = @item.ID })" class="btn btn-outline-primary">Detalle</a>
+                    <a href="@Url.Action("Edit"     ,"Form1",new { Id = @item.ID })" class="btn btn-outline-warning">Edit</a>
+                    <a href="@Url.Action("Delete"   ,"Form1",new { Id = @item.ID })" class="btn btn-outline-danger">Delete</a>
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>

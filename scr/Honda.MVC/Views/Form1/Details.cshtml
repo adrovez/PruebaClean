@@ -1,0 +1,25 @@
+﻿@model Honda.MVC.Models.TablaCodigoViewModel
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<form>
+    <div class="row">
+        <div class="col-4">
+            <label class="form-label">Condigo</label>
+            <input type="text" value="@Model.CODIGO" readonly />
+        </div>
+        <div class="col-4">
+            <label class="form-label">Descripcion</label>
+            <input type="text" value="@Model.DESCRIPCION" readonly />
+        </div>
+    </div>
+    <a href="@Url.Action("Index","Form1")" class="btn btn-outline-secondary">Volver</a>
+
+</form>
+
+
+

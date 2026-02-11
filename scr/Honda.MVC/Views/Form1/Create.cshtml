@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+<form id="formCreate">
+    <div class="row">
+        <div class="col-4">
+            <label class="form-label">Codigo</label>
+            <input type="text" name="codigo" id="codigo" value="" maxlength="10" required />
+        </div>
+        <div class="col-4">
+            <label class="form-label">Descripcion</label>
+            <input type="text" name="descripcion" id="descripcion" value="" maxlength="10" required />
+        </div>
+
+    </div>
+    <div class="btn-group">
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a href="@Html.Action("Index","Form1")" class="btn btn-outline-light">Volver</a>
+    </div>
+
+</form>
+
